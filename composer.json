@@ -1,0 +1,19 @@
+{
+    "name": "jbenoit2011/array-utils",
+    "description": "Array helpers for PHP",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "^5.2"
+    },
+    "license": "GPL v3",
+    "authors": [
+        {
+            "name": "Julien BENOIT",
+            "email": "jbenoit.jb+composer@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {"ArrayUtils\\": "src/"}
+    }
+}
