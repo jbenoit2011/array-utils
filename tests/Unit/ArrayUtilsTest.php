@@ -38,4 +38,22 @@ class ArrayUtilsTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals([1], $flatten);
     }
+
+    public function testXrangeBounds()
+    {
+        $range = ArrayUtils::xrange(0, 2);
+        $this->assertEquals(0, $range->current());
+        $range->next();
+        $range->next();
+        $this->assertEquals(2, $range->current());
+    }
+
+    public function testXrangeStep()
+    {
+        $range = ArrayUtils::xrange(0, 2, 2);
+        $this->assertEquals(0, $range->current());
+
+        $range->next();
+        $this->assertEquals(2, $range->current());
+    }
 }

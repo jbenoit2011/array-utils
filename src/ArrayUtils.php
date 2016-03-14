@@ -2,6 +2,9 @@
 
 namespace ArrayUtils;
 
+use Generator;
+use LogicException;
+
 class ArrayUtils
 {
     /**
@@ -65,5 +68,35 @@ class ArrayUtils
         array_walk_recursive($array, function($a) use (&$return) { $return[] = $a; });
 
         return $return;
+    }
+
+    /**
+     * @see http://php.net/manual/en/language.generators.overview.php
+     *
+     * @param $start
+     * @param $stop
+     * @param int $step
+     *
+     * @return Generator
+     */
+    public static function xrange($start, $stop, $step = 1)
+    {
+        if ($start < $stop) {
+            if ($step <= 0) {
+                throw new LogicException('Step must be greater than zero');
+            }
+
+            for ($i = $start; $i <= $stop; $i += $step) {
+                yield $i;
+            }
+        } else {
+            if ($step >= 0) {
+                throw new LogicException('Step must be lesser than zero');
+            }
+
+            for ($i = $start; $i >= $stop; $i += $step) {
+                yield $i;
+            }
+        }
     }
 }
